@@ -1,4 +1,6 @@
-﻿using Infrastructure.Data;
+﻿using ApplicationCore.Interfaces;
+using Infrastructure.Data;
+using Infrastructure.Data.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -22,7 +24,7 @@ namespace Infrastructure
 
         private static void ConfigureInjection(this IServiceCollection service)
         {
-            //service.AddScoped<IUnitOfWork, UnitOfWork>();
+            service.AddScoped<IUnitOfWork, UnitOfWork>();
         }
     }
 }
