@@ -11,5 +11,7 @@ namespace ApplicationCore.Models
         public string Description { get; set; }
         public int ProductTypeId { get; set; }
         public ProductType ProductType { get; set; }
+        public User User { get; set; }
+        public int UserId { get; set; }
     }
 }
