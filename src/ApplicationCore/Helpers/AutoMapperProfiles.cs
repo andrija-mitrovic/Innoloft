@@ -14,7 +14,7 @@ namespace ApplicationCore.Helpers
                 });
             CreateMap<Product, ProductListDto>()
                 .ForMember(dest => dest.ContactPerson, opt => {
-                    opt.MapFrom(src => src.User.Username + " " + src.User.Phone);
+                    opt.MapFrom(src => src.User);
                 });
             CreateMap<ProductCreateDto, Product>();
             CreateMap<ProductUpdateDto, Product>();
@@ -22,6 +22,7 @@ namespace ApplicationCore.Helpers
             CreateMap<ProductType, ProductTypeDetailDto>();
 
             CreateMap<User, UserDetailDto>();
+            CreateMap<User, UserListDto>();
 
             CreateMap<Address, AddressDetailDto>();
 

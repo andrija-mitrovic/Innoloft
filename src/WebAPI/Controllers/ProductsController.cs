@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.DTOs;
+using ApplicationCore.Helpers;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Models;
 using AutoMapper;
@@ -26,24 +27,13 @@ namespace WebAPI.Controllers
 
         // GET: api/products
         [HttpGet]
-        public async Task<IActionResult> GetProducts()
+        public async Task<IActionResult> GetProducts([FromQuery] PagingParams pagingParams)
         {
-            var products = await _unitOfWork.Products.GetProductsWithTypeAndUserAsync();
-            var productsDto = _mapper.Map<IEnumerable<ProductDetailDto>>(products);
+            var products = await _unitOfWork.Products.GetProductsWithTypeAndUserAsync(pagingParams);
+            var productsDto = _mapper.Map<IEnumerable<ProductListDto>>(products);
 
             return Ok(productsDto);
         }
-
-        //// GET: api/products
-        //[HttpGet]
-        //public async Task<IActionResult> GetProducts([FromQuery] PagingParams pagingParams)
-        //{
-        //    var products = await _unitOfWork.Products.GetProductsWithTypeAndUserAsync(pagingParams);
-        //    //var productsDto = _mapper.Map<IEnumerable<ProductDetailDto>>(products);
-        //    var productsDto = _mapper.Map<IEnumerable<ProductListDto>>(products);
-
-        //    return Ok(productsDto);
-        //}
 
         // GET: api/products/1
         [HttpGet("{id}", Name = "GetProduct")]
