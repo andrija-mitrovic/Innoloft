@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System.Reflection;
 
 namespace ApplicationCore
 {
@@ -7,7 +8,7 @@ namespace ApplicationCore
         public static void AddCore(this IServiceCollection service)
         {
             service.ConfigureInjection();
-            //service.AddAutoMapper(Assembly.GetExecutingAssembly());
+            service.AddAutoMapper(Assembly.GetExecutingAssembly());
         }
 
         private static void ConfigureInjection(this IServiceCollection service)

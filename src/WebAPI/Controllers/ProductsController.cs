@@ -29,8 +29,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetProducts()
         {
             var products = await _unitOfWork.Products.GetProductsWithTypeAndUserAsync();
-            //var productsDto = _mapper.Map<IEnumerable<ProductDetailDto>>(products);
-            var productsDto = _mapper.Map<IEnumerable<ProductListDto>>(products);
+            var productsDto = _mapper.Map<IEnumerable<ProductDetailDto>>(products);
 
             return Ok(productsDto);
         }
