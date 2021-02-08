@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace WebAPI.Controllers
 {
@@ -30,7 +31,7 @@ namespace WebAPI.Controllers
         public async Task<IActionResult> GetProducts([FromQuery] PagingParams pagingParams)
         {
             var products = await _unitOfWork.Products.GetProductsWithTypeAndUserAsync(pagingParams);
-            var productsDto = _mapper.Map<IEnumerable<ProductListDto>>(products);
+            var productsDto = _mapper.Map<List<ProductListDto>>(products);  
 
             return Ok(productsDto);
         }
