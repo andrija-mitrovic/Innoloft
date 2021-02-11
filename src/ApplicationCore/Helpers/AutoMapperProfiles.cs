@@ -20,6 +20,8 @@ namespace ApplicationCore.Helpers
             CreateMap<ProductUpdateDto, Product>();
 
             CreateMap<ProductType, ProductTypeDetailDto>();
+            CreateMap<ProductTypeCreateDto, ProductType>();
+            CreateMap<ProductTypeUpdateDto, ProductType>();
 
             CreateMap<User, UserDetailDto>();
             CreateMap<User, UserListDto>();
